@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +55,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ComposersSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ComposersSearch.Designer.cs">
+      <DependentUpon>ComposersSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseForm.Designer.cs">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLibraryDataSet.cs">
+      <DependentUpon>DBLibraryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBLibraryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBLibraryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PerformancesSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PerformancesSearch.Designer.cs">
+      <DependentUpon>PerformancesSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PerformersSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PerformersSearch.Designer.cs">
+      <DependentUpon>PerformersSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongsADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SongsADD.Designer.cs">
+      <DependentUpon>SongsADD.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ComposersSearch.resx">
+      <DependentUpon>ComposersSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseForm.resx">
+      <DependentUpon>DatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PerformancesSearch.resx">
+      <DependentUpon>PerformancesSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PerformersSearch.resx">
+      <DependentUpon>PerformersSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,7 +115,31 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SongsADD.resx">
+      <DependentUpon>SongsADD.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DBLibraryDataSet.xsc">
+      <DependentUpon>DBLibraryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBLibraryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBLibraryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBLibraryDataSet.xss">
+      <DependentUpon>DBLibraryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.COMPOSERS_SONGSTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.COMPOSERTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.PERFORMANCETableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.PERFORMERTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.SONGTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.SONG_COLLECTIONTableAdapter.datasource" />
+    <None Include="Properties\DataSources\Composers_Database.DBLibraryDataSetTableAdapters.СSONGTableAdapter.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +152,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Composers Database Data\Composers Database Data.csproj">
+      <Project>{f0bf2429-9eed-474c-9315-30a8a156d0d3}</Project>
+      <Name>Composers Database Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hqdefault.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glowing-music-notes-moving-on-sheet-passionate-love-song-romantic-background_scwo4cuge_thumbnail-full01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A-95537-1399383484-6429.jpeg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2018-11-26_18-18-16.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
